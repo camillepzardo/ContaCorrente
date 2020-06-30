@@ -1,6 +1,7 @@
 import { Cliente } from "./Cliente.js";
 
 export class contaCorrente {
+    static numeroDeContas = 0;
     agencia;
     _cliente;
     
@@ -20,6 +21,12 @@ export class contaCorrente {
 
     get saldo(){
         return this._saldo;
+    }
+//construtor tbm pode usar acessores dentro da classe
+    constructor(agencia, cliente){
+        this.agencia = agencia;
+        this.cliente = cliente;
+        contaCorrente.numeroDeContas += 1;
     }
 
     sacar(valor) {
