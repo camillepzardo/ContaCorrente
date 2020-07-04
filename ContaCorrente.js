@@ -2,8 +2,6 @@ import { Cliente } from "./Cliente.js";
 
 export class contaCorrente {
     static numeroDeContas = 0;
-    agencia;
-    _cliente;
     
     set cliente(novoValor){
         if(novoValor instanceof Cliente){           
@@ -16,7 +14,7 @@ export class contaCorrente {
     }
 
         // proposta de sintese de dados privados https://github.com/tc39/proposal-class-fields#private-fields
-    _saldo = 0; //atributo com _ na frente, privado, n mexer.  #saldo = 0, 
+     //atributo com _ na frente, privado, n mexer.  #saldo = 0, 
 
 
     get saldo(){
@@ -26,6 +24,7 @@ export class contaCorrente {
     constructor(agencia, cliente){
         this.agencia = agencia;
         this.cliente = cliente;
+        this._saldo = 0;
         contaCorrente.numeroDeContas += 1;
     }
 
@@ -37,7 +36,7 @@ export class contaCorrente {
     }
 
     depositar(valor) {
-        if (valor <= 0) {
+        if (valor <= 100) {
             return;
         }
         this._saldo += valor;
